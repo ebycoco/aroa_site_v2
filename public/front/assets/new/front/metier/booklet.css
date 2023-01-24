@@ -1,0 +1,404 @@
+.book {
+    transition: opacity 0.4s 0.2s;
+}
+
+p {
+    margin-top: 8vw;
+    text-align: center;
+    font-size: 5vw;
+    color: #000000;
+}
+
+.page {
+    width: 40vw;
+    height: 55vw;
+    float: left;
+    margin-bottom: 0.5em;
+    background: top no-repeat;
+    background-size: cover;
+}
+
+.page:nth-child(even) {
+    clear: both;
+}
+
+.book {
+    perspective: 250vw;
+}
+
+.book .pages {
+    width: 80vw;
+    height: 55vw;
+    position: relative;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    border-radius: 4px;
+}
+
+.book .page {
+    float: none;
+    clear: none;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    width: 40vw;
+    height: 55vw;
+    transform-origin: 0 0;
+    transition: transform 1.4s;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    user-select: none;
+    background-color: #f0f0f0;
+}
+
+.book .page:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transition: background 0.7s;
+    z-index: 2;
+}
+
+.book .page:nth-child(odd) {
+    pointer-events: all;
+    transform: rotateY(0deg);
+    right: 0;
+    border-radius: 0 4px 4px 0;
+}
+
+.book .page:nth-child(odd):hover {
+    transform: rotateY(-15deg);
+}
+
+.book .page:nth-child(odd):hover:before {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+.book .page:nth-child(odd):before {
+    background: rgba(0, 0, 0, 0);
+}
+
+.book .page:nth-child(even) {
+    pointer-events: none;
+    transform: rotateY(180deg);
+    transform-origin: 100% 0;
+    left: 0;
+    border-radius: 4px 0 0 4px;
+    border-color: black;
+}
+
+.book .page:nth-child(even):before {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.book .page.grabbing {
+    transition: none;
+}
+
+.book .page.flipped:nth-child(odd) {
+    pointer-events: none;
+    transform: rotateY(-180deg);
+}
+
+.book .page.flipped:nth-child(odd):before {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.book .page.flipped:nth-child(even) {
+    pointer-events: all;
+    transform: rotateY(0deg);
+}
+
+.book .page.flipped:nth-child(even):hover {
+    transform: rotateY(15deg);
+}
+
+.book .page.flipped:nth-child(even):hover:before {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+.book .page.flipped:nth-child(even):before {
+    background: rgba(0, 0, 0, 0);
+}
+
+*,
+* :before,
+*:after {
+    box-sizing: border-box;
+}
+
+/* html,
+body {
+    font-family: 'Lovers Quarrel', cursive;
+    background: #333;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+html {
+    height: 100%;
+} */
+
+/* body {
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2em 0;
+    line-height: 1.5em;
+} */
+
+.page:nth-child(odd) {
+    background-position: right top;
+}
+
+/*
+-------------------------- Cliquez pour tourner la page ---------------------
+*/
+
+/* .tourner-droite {
+    position: absolute;
+    left: -112%;
+    top: 48%;
+    font-size: 40px;
+} */
+
+.tourner-droite i {
+    position: absolute;
+    left: 110%;
+    top: 16%;
+}
+
+/* 
+.tourner-gauche {
+    position: absolute;
+    right: -111%;
+    top: 48%;
+    font-size: 40px;
+} */
+
+.tourner-gauche i {
+    position: absolute;
+    left: -10%;
+    top: 16%;
+}
+
+
+
+
+@media (max-width: 575.98px) {
+    .pages .page {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+    }
+
+    .pages .page.active {
+        opacity: 1;
+    }
+
+    .page {
+        width: 100% !important;
+        height: 100% !important;
+        float: left;
+        margin-bottom: 0.5em;
+        background: top no-repeat;
+        background-size: cover;
+    }
+
+    .book .pages {
+        width: 100% !important;
+        height: 100% !important;
+        position: relative;
+        transform-style: preserve-3d;
+        backface-visibility: hidden;
+        border-radius: 4px;
+    }
+
+    .book .page {
+        float: none;
+        clear: none;
+        margin: 0;
+        position: absolute;
+        top: 0;
+        width: 100% !important;
+        height: 50% !important;
+        transform-origin: 0 0;
+        transition: transform 1.4s;
+        backface-visibility: hidden;
+        transform-style: preserve-3d;
+        cursor: pointer;
+        user-select: none;
+        background-color: #f0f0f0;
+    }
+
+    .page h5 {
+        display: none;
+        visibility: hidden;
+    }
+
+    .copyaroa {
+        position: fixed;
+        top: 93.5%;
+        color: #fff;
+        width: 100%;
+        text-align: center;
+        display: flex;
+        justify-items: center;
+        align-items: center;
+        justify-content: center;
+        height: 72px;
+        font-size: 20px;
+    }
+
+    .precedent {
+        font-size: 27px;
+        position: absolute;
+        left: -15%;
+        top: 0;
+        padding: 158px 0 162px 0;
+
+    }
+
+    .suivant {
+        font-size: 27px;
+        position: absolute;
+        left: 102%;
+        top: 0;
+        padding: 158px 0 162px 0;
+    }
+}
+
+/* Medium devices (tablets, 768px and up)*/
+@media (min-width: 576px) and (max-width: 768px) {
+    .tourner-droite {
+        position: absolute;
+        left: -101%;
+        top: 48%;
+        font-size: 17px;
+    }
+
+    .tourner-gauche {
+        position: absolute;
+        right: -102%;
+        top: 48%;
+        font-size: 17px;
+    }
+}
+
+/* Large devices (desktops, 992px and up)*/
+@media (min-width: 769px) and (max-width: 991px) {
+    .tourner-droite {
+        position: absolute;
+        left: -112%;
+        top: 48%;
+        font-size: 25px;
+    }
+
+    .tourner-gauche {
+        position: absolute;
+        right: -111%;
+        top: 48%;
+        font-size: 25px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .tourner-droite {
+        position: absolute;
+        left: -112%;
+        top: 48%;
+        font-size: 28px;
+    }
+
+    .tourner-gauche {
+        position: absolute;
+        right: -102%;
+        top: 48%;
+        font-size: 28px;
+    }
+}
+
+
+/* Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+    .tourner-droite {
+        position: absolute;
+        left: -112%;
+        top: 48%;
+        font-size: 40px;
+    }
+
+    .tourner-gauche {
+        position: absolute;
+        right: -102%;
+        top: 48%;
+        font-size: 40px;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.slider {
+    overflow: hidden;
+    height: 70% !important;
+    width: 100%;
+    position: relative;
+    /* z-index: 10000; */
+}
+
+.slider img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    padding: 26px 0px 38px 2px;
+    margin: 1px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.slider img.actived {
+    opacity: 1;
+    transition: all 2s;
+    animation: slidedroite 2s;
+}
+
+.slider img.activeg {
+    opacity: 1;
+    transition: all 2s;
+    animation: slidegauche 2s;
+}
+
+
+@keyframes slidedroite {
+    from {
+        margin-left: 100%;
+        /* width: 300%; */
+    }
+
+    to {
+        margin-left: 0%;
+        width: 100%;
+    }
+}
+@keyframes slidegauche {
+    from {
+        margin-left: -100%;
+        /* width: 300%; */
+    }
+
+    to {
+        margin-left: 0%;
+        width: 100%;
+    }
+}

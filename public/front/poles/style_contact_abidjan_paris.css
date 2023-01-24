@@ -1,0 +1,337 @@
+/* Mise en forme ecran telephone*/
+@media (max-width: 575.98px) {
+    .contact_abidjan p span {
+        position: absolute;
+        border-top: 2px solid #7086B1;
+        width: 35px;
+        background: rgb(20, 17, 17);
+        margin: 5px;
+    }
+
+    .contact_paris p span {
+        position: absolute;
+        border-top: 2px solid #7086B1;
+        width: 20px;
+        background: rgb(20, 17, 17);
+        margin: 4px 7px 50px -23px;
+    }
+
+    .contact_abidjan {
+        position: absolute;
+        top: 85%;
+        left: 3%;
+        width: 36%;
+        height: 200px;
+        /* background: linear-gradient(rgb(104, 101, 101),transparent, #ddd, #1c2524, #1c2524, transparent); */
+        border-radius: 15% 15% 50% 50%;
+        padding: 25px 5px 5px 5px;
+        /* text-align: center; */
+    }
+
+    .contact_paris {
+        position: absolute;
+        top: 85%;
+        left: 53%;
+        width: 42%;
+        height: 200px;
+        /* background: linear-gradient(rgb(104, 101, 101),transparent, #ddd, #1c2524, #1c2524, transparent); */
+        border-radius: 15% 15% 50% 50%;
+        padding: 25px 5px 5px 5px;
+        /* text-align: center; */
+        text-align: right;
+    }
+
+    .contact_abidjan h2,
+    .contact_paris h2 {
+        font-size: 8px;
+    }
+
+    .contact_abidjan p,
+    .contact_paris p {
+        font-size: 6px;
+    }
+}
+
+/* Mise en forme ecran tablette*/
+@media (min-width: 575.99px) and (max-width: 768px) {
+    .contact_abidjan p span {
+        position: absolute;
+        border-top: 2px solid #7086B1;
+        width: 35px;
+        background: rgb(20, 17, 17);
+        margin: 5px;
+    }
+
+    .contact_paris p span {
+        position: absolute;
+        border-top: 2px solid #7086B1;
+        width: 20px;
+        background: rgb(20, 17, 17);
+        margin: 4px 7px 50px -23px;
+    }
+
+    .contact_abidjan {
+        position: absolute;
+        top: 73%;
+        left: 3%;
+        width: 28%;
+        height: 200px;
+        /* background: linear-gradient(rgb(104, 101, 101),transparent, #ddd, #1c2524, #1c2524, transparent); */
+        border-radius: 15% 15% 50% 50%;
+        padding: 25px 5px 5px 5px;
+        /* text-align: center; */
+    }
+
+    .contact_paris {
+        position: absolute;
+        top: 73%;
+        left: 69%;
+        width: 28%;
+        height: 200px;
+        /* background: linear-gradient(rgb(104, 101, 101),transparent, #ddd, #1c2524, #1c2524, transparent); */
+        border-radius: 15% 15% 50% 50%;
+        padding: 25px 5px 5px 5px;
+        /* text-align: center; */
+        text-align: right;
+    }
+
+    .contact_abidjan h2,
+    .contact_paris h2 {
+        font-size: 15px;
+    }
+
+    .contact_abidjan p,
+    .contact_paris p {
+        font-size: 8px;
+    }
+}
+
+/* Mise en forme ecran tablette*/
+@media (min-width: 769px) and (max-width: 991px) {
+
+    /*
+    ------------- Sytle trait bleu contact Abidjan ------------
+    */
+    .contact_abidjan p span {
+        position: absolute;
+        border-top: 2px solid #7086B1;
+        width: 57px;
+        background: rgb(20, 17, 17);
+        margin: 7px;
+    }
+
+    /*
+    ------------- Sytle trait bleu contact paris ------------
+    */
+    .contact_paris p span {
+        position: absolute;
+        border-top: 2px solid #7086B1;
+        width: 19px;
+        background: rgb(20, 17, 17);
+        margin: 4px 7px 50px -26px;
+    }
+
+
+    /*
+    ------------- Sytle contact Abidjan ------------
+    */
+    .contact_abidjan {
+        position: absolute;
+        top: 73%;
+        left: 3%;
+        width: 28%;
+        height: 200px;
+        /* background: linear-gradient(rgb(104, 101, 101),transparent, #ddd, #1c2524, #1c2524, transparent); */
+        border-radius: 15% 15% 50% 50%;
+        padding: 25px 5px 5px 5px;
+        /* text-align: center; */
+    }
+
+    /*
+    ------------- Sytle contact paris ------------
+    */
+    .contact_paris {
+        position: absolute;
+        top: 73%;
+        left: 65%;
+        width: 32%;
+        height: 200px;
+        /* background: linear-gradient(rgb(104, 101, 101),transparent, #ddd, #1c2524, #1c2524, transparent); */
+        border-radius: 15% 15% 50% 50%;
+        padding: 25px 5px 5px 5px;
+        /* text-align: center; */
+        text-align: right;
+    }
+
+    /*
+    ------------- Taille text contact ------------
+    */
+    .contact_abidjan h2,
+    .contact_paris h2 {
+        font-size: 12px;
+    }
+
+    .contact_abidjan p,
+    .contact_paris p {
+        font-size: 9px;
+    }
+
+}
+
+/* Mise en forme ecran moyen*/
+@media (min-width: 992px) and (max-width: 1199px) {
+    .contact_abidjan p span {
+        position: absolute;
+        border-top: 2px solid #7086B1;
+        width: 84px;
+        background: rgb(20, 17, 17);
+        margin: 7px;
+    }
+
+    .contact_paris p span {
+        position: absolute;
+        border-top: 2px solid #7086B1;
+        width: 50px;
+        background: rgb(20, 17, 17);
+        margin: 4px 7px 50px -53px;
+    }
+
+    .contact_abidjan {
+        position: absolute;
+        top: 80%;
+        left: 3%;
+        width: 28%;
+        height: 200px;
+        /* background: linear-gradient(rgb(104, 101, 101),transparent, #ddd, #1c2524, #1c2524, transparent); */
+        border-radius: 15% 15% 50% 50%;
+        padding: 25px 5px 5px 5px;
+        /* text-align: center; */
+    }
+
+    .contact_paris {
+        position: absolute;
+        top: 80%;
+        left: 69%;
+        width: 28%;
+        height: 200px;
+        /* background: linear-gradient(rgb(104, 101, 101),transparent, #ddd, #1c2524, #1c2524, transparent); */
+        border-radius: 15% 15% 50% 50%;
+        padding: 25px 5px 5px 5px;
+        /* text-align: center; */
+        text-align: right;
+    }
+
+    .contact_abidjan h2,
+    .contact_paris h2 {
+        font-size: 11px;
+    }
+
+    .contact_abidjan p,
+    .contact_paris p {
+        font-size: 10px;
+    }
+}
+
+
+/* Mise en forme grand ecran*/
+@media (min-width: 1200px) {
+    .contact_abidjan p span {
+        position: absolute;
+        border-top: 2px solid #7086B1;
+        width: 84px;
+        background: rgb(20, 17, 17);
+        margin: 4px;
+    }
+
+    .contact_paris p span {
+        position: absolute;
+        border-top: 2px solid #7086B1;
+        width: 50px;
+        background: rgb(20, 17, 17);
+        margin: 4px 7px 50px -53px;
+    }
+
+    .contact_abidjan {
+        position: absolute;
+        top: 80%;
+        left: 3%;
+        width: 28%;
+        height: 200px;
+        /* background: linear-gradient(rgb(104, 101, 101),transparent, #ddd, #1c2524, #1c2524, transparent); */
+        border-radius: 15% 15% 50% 50%;
+        padding: 25px 5px 5px 5px;
+        transition: 2s all;
+        /* text-align: center; */
+    }
+
+
+    .contact_paris {
+        position: absolute;
+        top: 80.5%;
+        left: 69%;
+        width: 28%;
+        height: 200px;
+        /* background: linear-gradient(rgb(104, 101, 101),transparent, #ddd, #1c2524, #1c2524, transparent); */
+        border-radius: 15% 15% 50% 50%;
+        padding: 25px 5px 5px 5px;
+        text-align: right;
+        transition: 2s all;
+    }
+
+    .contact_abidjan h2,
+    .contact_paris h2 {
+        font-size: 13px;
+    }
+
+    .contact_abidjan p,
+    .contact_paris p {
+        font-size: 8px;
+    }
+}
+
+
+
+.contact_abidjan a,
+.contact_paris a {
+    color: #fff !important;
+    text-decoration: none !important;
+    text-transform: uppercase;
+}
+
+.contact_abidjan i,
+.contact_paris i {
+    color: #7086B1;
+}
+
+
+.contact_abidjan h6,
+.contact_abidjan h2,
+.contact_abidjan p,
+.contact_paris h6 {
+    color: #fff;
+    font-weight: 400;
+}
+
+.contact_abidjan div,
+.contact_paris div {
+    transition: 2s all;
+}
+
+.contact_abidjan div:hover,
+.contact_paris div:hover {
+    transform: scale(1.2);
+    transition: 1s all ease-in-out;
+}
+
+
+.contact_abidjan h6:hover,
+.contact_paris h6:hover {
+    color: #fff;
+    border-radius: 25%;
+    transition: 1s all;
+
+}
+
+.ab_zindex {
+    z-index: -1;
+}

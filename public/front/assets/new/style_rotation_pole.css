@@ -1,0 +1,506 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Lato', sans-serif !important;
+}
+
+/*
+------------- Sytle logo ------------
+*/
+.btn-home {
+    float: left;
+    margin: 15px 40px;
+    font-size: 30px;
+    color: #ffffff;
+    transition: all 2s ease-in-out;
+}
+
+/* .btn-home img {
+    width: 100px;
+} */
+/*
+    ------------- Effet lorsqu'on survole le logo ------------
+    */
+.btn-home:hover {
+    color: rgb(75, 221, 221);
+    transform: scale(1.5);
+    transition: all 2s ease-in-out;
+}
+
+@keyframes slideInFromTop {
+    0% {
+        transform: translateX(100%);
+        top: 0
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/*
+------------  Icone centrale ----------------
+*/
+.btn-menu .ligne p a {
+    text-decoration: none;
+    text-align: center;
+    color: #fff;
+}
+
+.btn-menu .ligne p {
+    text-align: center;
+    margin-left: 10px;
+}
+
+/* Mise en forme ecran telephone*/
+@media (max-width: 575.98px) {
+    @keyframes rotation {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    /*postionnement logo*/
+
+    .btn-home {
+        margin: 5px 10px;
+        font-size: 30px;
+    }
+
+    /*
+    ------------- Taille logo ----------
+    */
+
+    .btn-home img {
+        width: 70px;
+    }
+
+
+    /* Rotation des icone */
+    .poleicons {
+        margin: auto;
+        height: 100%;
+        width: 100%;
+        animation: rotation 35s linear infinite;
+        animation-direction: alternate-reverse;
+        background: none;
+
+    }
+
+    /* Arret de la rotation après survol*/
+    .poleicons:hover {
+        /* margin: auto; */
+        animation-play-state: paused;
+
+        /* animation: rotation 9000000s linear infinite; */
+    }
+
+    .poleicons:hover .blob a {
+        text-decoration: none;
+        color: #fff;
+        animation-play-state: paused;
+    }
+
+
+
+    .blob a {
+        animation: rotation 35s linear infinite;
+        animation-direction: alternate;
+        color: #fff;
+        text-align: center;
+        width: 83%;
+        font-size: 12px;
+    }
+
+    .blob a:hover {
+        animation-play-state: paused;
+    }
+
+    .blob1, .blob2, .blob3, .blob4, .blob5, .blob6 {
+        width: 62px !important;
+    }
+
+    .blob1 span{
+        margin-left: -10px;
+    }
+    .blob3 span{
+        margin-left: -6px;
+    }
+}
+
+/* Mise en forme ecran tablette*/
+@media (min-width: 575.99px) and (max-width: 768px) {
+    .poleicons {
+        /* position: absolute; */
+        margin: auto;
+        height: 100%;
+        width: 40%;
+        animation: rotation 35s linear infinite;
+        animation-direction: alternate-reverse;
+        background: none;
+
+    }
+
+    .poleicons:hover {
+        margin: auto;
+        animation-play-state: paused;
+        /* animation: rotation 9000000s linear infinite; */
+    }
+
+    @keyframes rotation {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .blob a {
+        animation: rotation 35s linear infinite;
+        animation-direction: alternate;
+        color: #fff;
+        text-align: center;
+        width: 80%;
+        font-size: 13px;
+
+    }
+
+    .poleicons:hover .blob a {
+        text-decoration: none;
+        color: #fff;
+        animation-play-state: paused;
+    }
+
+    /*
+ ------------ Taille logo -----------
+ */
+    .btn-home img {
+        width: 70px;
+    }
+
+    .blob1, .blob2, .blob3, .blob4, .blob5, .blob6 {
+        width: 100px !important;
+    }
+}
+
+/* Mise en forme ecran tablette*/
+@media (min-width: 769px) and (max-width: 991px) {
+
+    /*
+    ===========  Block d'icones en rotation =========
+    */
+    .poleicons {
+        position: absolute;
+        margin: auto;
+        height: 93%;
+        width: 80%;
+        left: 10%;
+        top: 3%;
+        animation: rotation 35s linear infinite;
+        animation-direction: alternate-reverse;
+        background: none;
+    }
+
+    .poleicons:hover {
+        margin: auto;
+        animation-play-state: paused;
+        /* animation: rotation 9000000s linear infinite; */
+    }
+
+    .poleicons:hover .blob a {
+        text-decoration: none;
+        color: #fff;
+        animation-play-state: paused;
+    }
+
+    @keyframes rotation {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .blob a {
+        animation: rotation 35s linear infinite;
+        animation-direction: alternate;
+        color: #fff;
+        text-align: center;
+        font-size: 13px;
+        width: 75%;
+    }
+
+    /*
+    ------------------- Taille logo -------------
+    */
+    .btn-home img {
+        width: 78px;
+    }
+    .blob1, .blob2, .blob3, .blob4, .blob5, .blob6 {
+        width: 100px !important;
+    }
+
+}
+
+/* Mise en forme ecran moyen*/
+@media (min-width: 992px) and (max-width: 1199px) {
+    @keyframes rotation {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    /* Ajustement de bloc icone*/
+    .poleicons {
+        position: absolute;
+        height: 90%;
+        width: 60%;
+        top: 5%;
+        left: 23%;
+        animation: rotation 35s linear infinite;
+        animation-delay: 0.5s;
+        animation-direction: alternate-reverse;
+
+    }
+
+    .poleicons:hover {
+        height: 90%;
+        width: 60%;
+        top: 5%;
+        left: 23%;
+        position: absolute;
+        animation-play-state: paused;
+    }
+
+    .poleicons:hover .blob a {
+        text-decoration: none;
+        color: #fff;
+        animation-play-state: paused;
+    }
+
+
+
+    .blob a {
+        animation: rotation 35s linear infinite;
+        animation-delay: 0.5s;
+        animation-direction: alternate;
+        color: #fff;
+        font-size: 13px;
+    }
+
+    .blob {
+        text-align: center;
+    }
+
+    .blob a:hover img {
+        border-radius: 50%;
+    }
+
+    @keyframes arriere {
+        0% {
+            opacity: 0.2;
+        }
+
+        20% {
+            opacity: 0.5;
+        }
+
+        40%,
+        60% {
+            opacity: 0.7;
+        }
+
+        100% {
+            opacity: 0.5;
+        }
+
+    }
+
+    .btn-home img {
+        width: 100px;
+    }
+
+    .blob1, .blob2, .blob3, .blob4, .blob5, .blob6 {
+        width: 100px !important;
+    }
+}
+
+
+/* Mise en forme grand ecran*/
+@media (min-width: 1200px) {
+
+
+    @keyframes rotation {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    /* Ajustement de bloc icone*/
+    .poleicons {
+        position: absolute;
+        height: 90%;
+        width: 60%;
+        top: 5%;
+        left: 18%;
+        animation: rotation 35s linear infinite;
+        animation-delay: 0.5s;
+        animation-direction: alternate-reverse;
+
+    }
+
+    .poleicons:hover {
+        height: 90%;
+        width: 60%;
+        top: 5%;
+        left: 18%;
+        position: absolute;
+        animation-play-state: paused;
+    }
+
+    .poleicons:hover .blob a {
+        text-decoration: none;
+        color: #fff;
+        animation-play-state: paused;
+    }
+
+
+
+    .blob a {
+        animation: rotation 35s linear infinite;
+        animation-delay: 0.5s;
+        animation-direction: alternate;
+        color: #fff;
+        font-size: 15px;
+    }
+
+    .blob {
+        text-align: center;
+    }
+
+    .blob a:hover img {
+        border-radius: 50%;
+    }
+
+    @keyframes arriere {
+        0% {
+            opacity: 0.2;
+        }
+
+        20% {
+            opacity: 0.5;
+        }
+
+        40%,
+        60% {
+            opacity: 0.7;
+        }
+
+        100% {
+            opacity: 0.5;
+        }
+
+    }
+
+    /*
+    ------------- Taille logo 
+    */
+    .btn-home img {
+        width: 100px;
+    }
+
+    .blob1, .blob2, .blob3, .blob4, .blob5, .blob6 {
+        width: 100px !important;
+    }
+}
+
+
+
+/* Style de pointage souris et survol*/
+.clickAnim {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: linear-gradient(to top, #427ece, #bebebb, #bdbd49);
+    position: absolute;
+    z-index: 1;
+    transform: scale(0);
+    transform-origin: center;
+    animation: clickAnim 1s ease-in-out;
+}
+
+.hoverAnim {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: rgba(104, 201, 247, 0.5);
+    position: absolute;
+    z-index: 1;
+    transform: scale(0);
+    transform-origin: center;
+    animation: clickAnim 2s ease-in-out;
+    z-index: -1;
+}
+
+@keyframes clickAnim {
+    0% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+
+/* 
+---------------------Mise en forme du boutton menu-------------------------
+*/
+
+.blobs a {
+    text-transform: uppercase;
+    top: -50%;
+    left: -50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    color: #fff;
+    text-decoration: none;
+    padding: 2%;
+    letter-spacing: 2px;
+    font-weight: 500px;
+    font-size: 10px !important;
+    text-align: center;
+}
+
+.blobs a::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 49%;
+    width: 120px;
+    height: 120px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background-color: #002060 !important;
+    z-index: -1;
+    transition: all ease 0.5s;
+}
+
+@-moz-document url-prefix() {
+    .blobs a::before {
+
+        top: 0 !important;
+        left: 0 !important;
+    }
+}
+
+.blobs a:hover::after {
+    width: 100%;
+    background-color: #615c59;
+}
+
+.blobss img {
+    margin-bottom: -6px;
+}
