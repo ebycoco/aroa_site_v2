@@ -6,7 +6,7 @@
                     class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="{{ route('admin.documentation') }}" class="nav-link btn btn-primary sm text-white">Documentation</a>
+            <a href="{{ route('admin.documentation') }}" class="nav-link btn btn-primary sm text-white"target="_blank">Documentation</a>
         </li>
     </ul>
 

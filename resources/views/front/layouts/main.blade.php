@@ -133,7 +133,7 @@
 
     </style>
     <!-- Go to www.addthis.com/dashboard to customize your tools -->
-    <script src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-604f42250f83d6c1"></script>
+   
 
 </head>
 
@@ -149,7 +149,10 @@
         </nav>
     </header>
     <!-- header -->
+
     @yield('content')
+
+
     <script src="{{ asset('public/front/js/jquery-3.4.1.min.js') }}"></script>
 
     <script src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
@@ -191,6 +194,9 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgIfLQi8KTxTJahilcem6qHusV-V6XXjw"></script>
     <!--custom functions and script-->
     <script src="{{ asset('public/front/js/functions.js') }}"></script>
+
+
+
 </body>
 <!-- Réalisé par:
 

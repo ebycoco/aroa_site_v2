@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Validator;
 
 class PagesController extends Controller
 {
+    /**
+     * Summary of poles
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|string
+     */
     public function poles()
     {
         try {
@@ -24,17 +28,29 @@ class PagesController extends Controller
             return $e->getMessage();
         }
     }
-
+    /**
+     * Summary of accueil
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function accueil()
     {
         $accueil = PageAccueil::get()->first();
         return view('front.accueil', ['accueil' => $accueil]);
     }
+     /**
+      * Summary of apropos
+      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+      */
 
     public function apropos()
     {
         return view('front.apropos');
     }
+     /**
+      * Summary of contactSubmit
+      * @param Request $request
+      * @return \Illuminate\Http\JsonResponse
+      */
 
     public function contactSubmit(Request $request)
     {
@@ -58,16 +74,16 @@ class PagesController extends Controller
 
 
         if ($request->ajax()) {
-            $data = $request->all(); 
+            $data = $request->all();
             $validator = Validator::make($data, $rules, $customMessages,);
             if ($validator->fails()) {
-                
+
                 return Response::json(array(
                     'success' => false,
                     'errors' => $validator->getMessageBag()->toArray()
 
                 ), 400); // 400 being the HTTP code for an invalid request.
-            } else { 
+            } else {
                 $contact = new Contact();
                 $contact->nom = $data['nom'];
                 $contact->prenom = "";
@@ -118,9 +134,27 @@ class PagesController extends Controller
 
     }
 
-
+    /**
+     * Summary of contact
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function contact()
-    { 
+    {
         return view('front.layouts.contact');
+    }
+
+    public function autres()
+    {
+        return view('autres');
+    }
+
+    public function changeLanguage(Request $request, $locale)
+    {
+        if (array_key_exists($locale, config('app.locales'))) {
+            app()->setLocale($locale);
+            \Cookie::queue(\Cookie::forever('locale', $locale));
+        }
+
+        return redirect()->back();
     }
 }

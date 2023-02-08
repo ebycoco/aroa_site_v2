@@ -9,6 +9,12 @@ use App\Models\OffreEmploi;
 
 class CommentController extends Controller
 {
+    /**
+     * Summary of store
+     * @param CommentStoreRequest $request
+     * @param Blog $post
+     * @return \Illuminate\Http\RedirectResponse|mixed
+     */
     public function store(CommentStoreRequest $request, Blog $post)
     {
         // dd($post->id);
@@ -20,11 +26,17 @@ class CommentController extends Controller
         ]);
 
         return redirect()->back();
-        
-    } 
+
+    }
+    /**
+     * Summary of storeOffreComment
+     * @param CommentStoreRequest $request
+     * @param mixed $id
+     * @return \Illuminate\Http\RedirectResponse|mixed
+     */
     public function storeOffreComment(CommentStoreRequest $request, $id)
     {
-
+ 
         $emploi = OffreEmploi::where('id', $id)->get()->first();
         // dd($emploi->id);
         $emploi->comments()->create([
@@ -35,6 +47,6 @@ class CommentController extends Controller
         ]);
 
         return redirect()->back();
-        
+
     }
 }

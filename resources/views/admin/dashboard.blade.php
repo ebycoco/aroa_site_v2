@@ -84,12 +84,12 @@
                 <div class="card-body">
                     <div class="d-flex">
                         <p class="d-flex flex-column">
-                            <span class="text-bold text-lg">820</span>
+                            <span class="text-bold text-lg">{{$visitorsToday}}</span>
                             <span>Visitors Over Time</span>
                         </p>
                         <p class="ml-auto d-flex flex-column text-right">
                             <span class="text-success">
-                                <i class="fas fa-arrow-up"></i> 12.5%
+                                <i class="fas fa-arrow-up"></i> {{$visitorsThisWeek}}%
                             </span>
                             <span class="text-muted">Since last week</span>
                         </p>
@@ -124,7 +124,7 @@
                 <div class="card-body">
                     <div class="d-flex">
                         <p class="d-flex flex-column">
-                            <span class="text-bold text-lg">$18,230.00</span>
+                            <span class="text-bold text-lg">{{count($visitors)}}</span>
                             <span>Sales Over Time</span>
                         </p>
                         <p class="ml-auto d-flex flex-column text-right">
@@ -321,4 +321,5 @@
 
         // lgtm [js/unused-local-variable]
     </script>
+    <script src=" {{asset('public/plugins/chart.js/Chart.min.js')}} "></script>
 @endsection

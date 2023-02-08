@@ -21,6 +21,12 @@ use Illuminate\Support\Facades\Session;
 
 class FrontendController extends Controller
 {
+    /**
+     * Summary of blogDetails
+     * @param mixed $pole
+     * @param mixed $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function blogDetails($pole, $id)
     {
         $pole_info = Pole::where('url', $pole)->get()->first();
@@ -32,6 +38,11 @@ class FrontendController extends Controller
         return view('front.metiers.blog_details', ['articles' => $articles, 'article' => $article, 'pole' => $pole_info, 'metiers' => $metiers, 'categories' => $categories]);
     }
 
+    /**
+     * Summary of blog
+     * @param mixed $pole
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function blog($pole)
     {
         Session::put('page', 'Blog');
@@ -42,6 +53,11 @@ class FrontendController extends Controller
         return view('front.metiers.blog', ['articles' => $articles, 'pole' => $pole_info, 'metiers' => $metiers]);
     }
 
+    /**
+     * Summary of presentation
+     * @param mixed $pole
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function presentation($pole)
     {
         Session::put('page', 'Presentation');
@@ -55,7 +71,11 @@ class FrontendController extends Controller
         // dd($presentation);
         return view('front.metiers.presentation', ['presentation' => $presentation, 'expertises' => $expertises, 'pole' => $pole_info, 'metiers' => $metiers]);
     }
-
+    /**
+     * Summary of offreEmploi
+     * @param mixed $pole
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function offreEmploi($pole)
     {
         Session::put('page', 'offre d\'emploi');
@@ -66,7 +86,12 @@ class FrontendController extends Controller
         // dd($offres);
         return view('front.metiers.offre', ['offre' => $offre,'offres' => $offres, 'pole' => $pole_info, 'metiers' => $metiers]);
     }
-
+    /**
+     * Summary of offreEmploiDetails
+     * @param mixed $pole
+     * @param mixed $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function offreEmploiDetails($pole, $id)
     {
 
@@ -92,7 +117,11 @@ class FrontendController extends Controller
         // $offres_poles = $collect_offres;
         return view('front.metiers.offre_detail', ['offres_poles' => $offres_poles, 'offres' => $offres, 'emploi' => $emploi, 'pole' => $pole_info, 'metiers' => $metiers]);
     }
-
+    /**
+     * Summary of equipe
+     * @param mixed $pole
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function equipe($pole)
     {
         //
@@ -105,7 +134,11 @@ class FrontendController extends Controller
 
         return view('front.metiers.team', ['pole' => $pole_info, 'metiers' => $metiers, 'teams' => $teams]);
     }
-
+    /**
+     * Summary of reference
+     * @param mixed $pole
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function reference($pole)
     {
         // reference
@@ -118,7 +151,11 @@ class FrontendController extends Controller
 
         return view('front.metiers.reference', ['pole' => $pole_info, 'metiers' => $metiers, 'references' => $references]);
     }
-
+    /**
+     * Summary of formation
+     * @param mixed $pole
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function formation($pole)
     {
         // reference
@@ -131,7 +168,11 @@ class FrontendController extends Controller
 
         return view('front.metiers.formation', ['pole' => $pole_info, 'metiers' => $metiers, 'formations' => $formations]);
     }
-
+    /**
+     * Summary of postuler
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function postuler(Request $request)
     {
         try {
@@ -194,9 +235,6 @@ class FrontendController extends Controller
                 }
             }
 
-
-
-
             $to_email = $data['email'];
             $datas = array(
                 'name' => $data['nom'],
@@ -234,7 +272,11 @@ class FrontendController extends Controller
             return back()->with('echec', 'L\envoie a échoué !');
         }
     }
-
+    /**
+     * Summary of spontanePostuler
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function spontanePostuler(Request $request)
     {
         $data = $request->all();

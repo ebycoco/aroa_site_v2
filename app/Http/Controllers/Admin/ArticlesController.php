@@ -10,6 +10,11 @@ use Session;
 
 class ArticlesController extends Controller
 {
+    /**
+     * Summary of index
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function index(Request $request)
     {
         Session::put('page', '/admin/page/article');
@@ -29,7 +34,11 @@ class ArticlesController extends Controller
         }
         // return view('admin.pages.blog.articles.index');
     }
-
+    /**
+     * Summary of addArticle
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function addArticle(Request $request)
     {
         $data = $request->all();
@@ -92,7 +101,12 @@ class ArticlesController extends Controller
             return redirect()->back()->with('success', "Article ajouté avec succès");
         }
     }
-
+    /**
+     * Summary of editArticle
+     * @param Request $request
+     * @param mixed $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function editArticle(Request $request, $id)
     {
         $data = $request->all();
@@ -168,13 +182,21 @@ class ArticlesController extends Controller
 
         return redirect()->route('admin.articles.index')->with('success', "Article modifié avec succès");
     }
-
+    /**
+     * Summary of updateArticle
+     * @param mixed $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function updateArticle($id)
     {
         $article = Blog::where('id', $id)->get()->first();
         return view('admin.pages.blog.articles.edit_article', ['article' => $article]);
     }
-
+    /**
+     * Summary of deleteArticle
+     * @param mixed $id
+     * @return \Illuminate\Http\RedirectResponse|mixed
+     */
     public function deleteArticle($id)
     {
         $article = Blog::findOrFail($id);

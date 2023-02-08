@@ -290,9 +290,9 @@
             color: #fff;
         }
 
-        .dropdownhome li:hover {
+        /* .dropdownhome li:hover {
             background: #002060 !important;
-        }
+        } */
 
         .menu-area li:hover>.dropdownhome li {
             display: block;
@@ -395,10 +395,10 @@
         .menu-area>ul>li {
             color: #fff;
         }
-
+/*
         .dropdownhome li:hover {
             background: #002060 !important;
-        }
+        } */
 
         .menu-area li:hover>.dropdownhome li {
             display: block;
@@ -503,9 +503,9 @@
             color: #fff;
         }
 
-        .dropdownhome li:hover {
+        /* .dropdownhome li:hover {
             background: #002060 !important;
-        }
+        } */
 
         .menu-area li:hover>.dropdownhome li {
             display: block;
@@ -568,6 +568,16 @@
      margin-left: -25%;
 }
 </style>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            var language = window.navigator.language || window.navigator.userLanguage;
+            new google.translate.TranslateElement({
+                pageLanguage: language,
+                includedLanguages: 'en,fr,de,es,it,pt,ru,ja,ko,zh-CN,zh-TW',
+            }, 'google_translate_element');
+            }
+    </script>
 
 <div class="menu-area">
     <ul>
@@ -579,6 +589,7 @@
                 @foreach (Config::get('languages') as $lang => $language)
                     @if ($lang != App::getLocale())
                         <li><a href="{{ route('lang.switch', $lang) }}" ><span class="flag-icon flag-icon-{{$language['flag-icon']}}"></span> {{ __('traduction.'.$language['display']) }}</a></li>
+                        <li><div id="google_translate_element"></div></li>
                     @endif
                 @endforeach
             </ul>
@@ -586,3 +597,4 @@
 
     </ul>
 </div>
+

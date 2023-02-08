@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Redirect;
 
 class LanguageController extends Controller
 {
+    /**
+     * Summary of switchLang
+     * @param mixed $lang
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function switchLang($lang)
     {
         if (array_key_exists($lang, Config::get('languages'))) {
@@ -17,6 +22,7 @@ class LanguageController extends Controller
         }
         return Redirect::back();
     }
-
     
+
+
 }

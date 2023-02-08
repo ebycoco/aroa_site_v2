@@ -36,42 +36,47 @@
         }
 
     </style>
-
 </head>
 
 <body style="width: 100%;" onselectstart="return false" oncontextmenu="return false" ondragstart="return false" onMouseOver="window.status='..message perso .. '; return true;">
 
     <a class="btn-home" href="{{ url('/') }}" title="Accueil"><img
             src="{{ asset('public/images/logo.png') }}" alt="logo"></a>
-    <div class="arriereplan" style="background: transparent; height: 100vh; width: 100%; ">
-        @include('front.layouts.langue_bouton')
-        {{-- <div style="width: 95%; height: 100vh; border: 3px solid #f00; margin: auto"></div> --}}
-
-        @include('front.layouts.contact_abidjan')
-        <div class="container-menu">
-            @if ($strategie != null)
-                <div class="btn-menu">
-                    <a href="{{ url('poles/strategie') }}">
-                        <img src="{{ asset('public/images/logo/poles/noir/' . $strategie->logo_noir_pole) }}" alt="icone"
-                            class="icone">
-                        <span>
-                            <b>{{ __('traduction.' . $strategie->nom_pole) }}</b>
-                        </span>
-                    </a>
-                </div>
-            @endif
-            <div class="poleicons">
-                @foreach ($poles as $pole)
-                    <div class="blob blob{{ $pole->id }}">
-                        <a href="{{ url('/poles/'.$pole->url) }}" title="{{ __('traduction.' . $pole->nom_pole) }}"><img
-                                src="{{ asset('public/images/logo/poles/noir/' . $pole->logo_noir_pole) }}" alt="icone"
-                                class="icone"><br><span><b>{{ __('traduction.' . $pole->nom_pole) }}</b></span></a>
-                    </div>
-                @endforeach
+            <div style="float: right; margin-top:0 !important; left: 100% !important">
+                @include('front.layouts.langue_bouton')
             </div>
 
+    <div class="main">
+            <div class="arriereplan" style="background: transparent; height: 100vh; width: 100%; ">
+                {{-- @include('front.layouts.langue_bouton') --}}
+                {{-- <div style="width: 95%; height: 100vh; border: 3px solid #f00; margin: auto"></div> --}}
+
+                @include('front.layouts.contact_abidjan')
+                <div class="container-menu">
+                    @if ($strategie != null)
+                        <div class="btn-menu">
+                            <a href="{{ url('poles/strategie') }}">
+                                <img src="{{ asset('public/images/logo/poles/noir/' . $strategie->logo_noir_pole) }}" alt="icone"
+                                    class="icone">
+                                <span>
+                                    <b>{{ __('traduction.' . $strategie->nom_pole) }}</b>
+                                </span>
+                            </a>
+                        </div>
+                    @endif
+                    <div class="poleicons">
+                        @foreach ($poles as $pole)
+                            <div class="blob blob{{ $pole->id }}">
+                                <a href="{{ url('/poles/'.$pole->url) }}" title="{{ __('traduction.' . $pole->nom_pole) }}"><img
+                                        src="{{ asset('public/images/logo/poles/noir/' . $pole->logo_noir_pole) }}" alt="icone"
+                                        class="icone"><br><span><b>{{ __('traduction.' . $pole->nom_pole) }}</b></span></a>
+                            </div>
+                        @endforeach
+                    </div>
+
+                </div>
+                @include('front.layouts.contact_paris')
         </div>
-        @include('front.layouts.contact_paris')
     </div>
 
     <script type="text/javascript" src="{{ asset('public/front/js/jquery-3.4.1.min.js') }}"></script>
@@ -166,6 +171,9 @@
             })
         }
     </script>
+
+
 </body>
+
 
 </html>

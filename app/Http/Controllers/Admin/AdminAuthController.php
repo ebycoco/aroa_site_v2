@@ -17,6 +17,11 @@ use Illuminate\Support\Facades\Mail;
 class AdminAuthController extends Controller
 {
      // Connexion
+     /**
+      * Summary of login
+      * @param Request $request
+      * @return mixed
+      */
      public function login(Request $request)
      {
          try {
@@ -28,7 +33,7 @@ class AdminAuthController extends Controller
                  if (Auth::guard('admin')->attempt(['email' => $data['email'], 'password' => $data['password'], 'status' => 1])) {
                      // $role = Admin::select('role_id')->where('email', $data['email'])->get()->first();
                      // $value = Admin::where('email', $data['email'])->get()->first();
- 
+
                      // Session::set('user', $value);
                      return redirect()->route('admin.dashboard');
                  } else {
@@ -37,33 +42,50 @@ class AdminAuthController extends Controller
                  }
              }else{
                 Session::flash('error', 'Veuillez vous connecter');
-                return view('admin.auth.login'); 
+                return view('admin.auth.login');
              }
-             
+
          } catch (\Exception $e) {
              $message = $e->getMessage();
              return view('errors.404', ['error' => $message]);
          }
      }
- 
- 
+
      //Déconnexion
+     /**
+      * Summary of logout
+      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+      */
      public function logout()
      {
          Auth::guard('admin')->logout();
          return redirect('admin');
      }
 
+     /**
+      * Summary of oublie
+      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+      */
      public function oublie()
      {
          return view('admin.auth.password_forget');
      }
+
+      /**
+       * Summary of reset
+       * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+       */
 
      public function reset()
      {
          return view('admin.auth.reset_password');
      }
 
+     /**
+      * Summary of password_email
+      * @param Request $request
+      * @return string
+      */
      public function password_email(Request $request)
      {
         $rules = [
@@ -87,12 +109,20 @@ class AdminAuthController extends Controller
         return 'test';
 
     }
-
+    /**
+     * Summary of showForgotForm
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function showForgotForm()
     {
         return view('admin.auth.forgot');
     }
 
+    /**
+     * Summary of sendResetLink
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function sendResetLink(Request $request)
     {
         $request->validate([
@@ -117,10 +147,21 @@ class AdminAuthController extends Controller
         return back()->with('success', 'We have e-mailled your password reset link');
     }
 
+    /**
+     * Summary of showResetForm
+     * @param Request $request
+     * @param mixed $token
+     * @return \Illuminate\Contracts\View\View|mixed
+     */
     public function showResetForm(Request $request, $token = null)
     {
         return view('admin.auth.reset')->with(['token' => $token, 'email' => $request->email]);
     }
+    /**
+     * Summary of resetPassword
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function resetPassword(Request $request)
     {
         $request->validate([

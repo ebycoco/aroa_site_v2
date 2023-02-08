@@ -23,6 +23,10 @@ class AdminController extends Controller
 {
 
     // Constructeur
+    /**
+     * Summary of __construct
+     * @param Admin $admin
+     */
     public function __construct(Admin $admin)
     {
         $this->admin = $admin;
@@ -30,6 +34,10 @@ class AdminController extends Controller
     }
 
     // documentation
+    /**
+     * Summary of documentation
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function documentation()
     {
         Session::put('page', '/admin/documentation');
@@ -38,48 +46,63 @@ class AdminController extends Controller
 
     }
 
-
     //Tableau de bord
+    /**
+     * Summary of dashboard
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function dashboard(Request $request)
     {
-    Session::put('page', '/admin/dashboard');
-    $user = Auth::user();
-    $articles = Blog::all();
-    $offres = OffreEmploi::all();
-    $equipes = Team::all();
-    $poles = Pole::all();
-    $visitors = Visitor::all();
+        Session::put('page', '/admin/dashboard');
+        $user = Auth::user();
+        $articles = Blog::all();
+        $offres = OffreEmploi::all();
+        $equipes = Team::all();
+        $poles = Pole::all();
+        $visitors = Visitor::all();
 
-    $startOfLastWeek  = Carbon::now()->subDays(7)->startOfWeek();
-    $endOfLastWeek  = Carbon::now()->subDays(7)->endOfWeek();
+        $startOfLastWeek  = Carbon::now()->subDays(7)->startOfWeek();
+        $endOfLastWeek  = Carbon::now()->subDays(7)->endOfWeek();
 
-    $date = \Carbon\Carbon::today()->subDays(7);
+        $date = \Carbon\Carbon::today()->subDays(7);
 
-    $currentDate = \Carbon\Carbon::now();
-    $agoDate = $currentDate->subDays($currentDate->dayOfWeek)->subWeek();
+        $currentDate = \Carbon\Carbon::now();
+        $agoDate = $currentDate->subDays($currentDate->dayOfWeek)->subWeek();
 
-    $visitors_current_week = Visitor::select('date', DB::raw('count(*) as total'))->whereBetween('date', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->groupBy('date')->get();
-    $visitors_last_week = Visitor::select('date', DB::raw('count(*) as total'))->whereBetween('date', [$startOfLastWeek, $endOfLastWeek])->groupBy('date')->get();
+        $visitors_current_week = Visitor::select('date', DB::raw('count(*) as total'))->whereBetween('date', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->groupBy('date')->get();
+        $visitors_last_week = Visitor::select('date', DB::raw('count(*) as total'))->whereBetween('date', [$startOfLastWeek, $endOfLastWeek])->groupBy('date')->get();
 
-    $chart_data_current_week = array();
-    foreach ($visitors_current_week as $data) {
-        array_push($chart_data_current_week, array($data->date->format('d.m.Y'), $data->total));
+        $chart_data_current_week = array();
+        foreach ($visitors_current_week as $data) {
+            array_push($chart_data_current_week, array($data->date->format('d.m.Y'), $data->total));
+        }
+
+        $chart_data_last_week = array();
+        foreach ($visitors_last_week as $data) {
+            array_push($chart_data_last_week, array($data->date->format('d.m.Y'), $data->total));
+        }
+
+        $visitors_datas = array();
+        $visitors_datas['visitors_current_week'] = $chart_data_current_week;
+        $visitors_datas['visitors_last_week'] = $chart_data_last_week;
+        $today = now()->startOfDay();
+        $visitorsToday = Visitor::whereDate('date', $today)->count();
+        $startOfWeek = now()->startOfWeek();
+        $endOfWeek = now()->endOfWeek();
+        $visitorsThisWeek = Visitor::whereBetween('date', [$startOfWeek, $endOfWeek])->count();
+        // dd($visitorsToday);
+
+
+        return view('admin.dashboard', ['visitorsThisWeek'=>$visitorsThisWeek,'visitorsToday'=>$visitorsToday,'user' => $user, 'articles' => $articles, 'offres' => $offres, 'equipes' => $equipes, 'poles' => $poles,'visitors'=>$visitors, 'visitors_datas' => $visitors_datas]);
     }
-
-    $chart_data_last_week = array();
-    foreach ($visitors_last_week as $data) {
-        array_push($chart_data_last_week, array($data->date->format('d.m.Y'), $data->total));
-    }
-
-    $visitors_datas = array();
-    $visitors_datas['visitors_current_week'] = $chart_data_current_week;
-    $visitors_datas['visitors_last_week'] = $chart_data_last_week;
-
-
-    return view('admin.dashboard', ['user' => $user, 'articles' => $articles, 'offres' => $offres, 'equipes' => $equipes, 'poles' => $poles,'visitors'=>$visitors, 'visitors_datas' => $visitors_datas]);
-}
 
     // Création d'un utilisateur
+    /**
+     * Summary of create
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse|mixed
+     */
     public function create(Request $request)
     {
         try {
@@ -124,6 +147,10 @@ class AdminController extends Controller
     }
 
     //La liste des utilisateurs
+    /**
+     * Summary of users
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function users()
     {
         try {
@@ -136,7 +163,10 @@ class AdminController extends Controller
             // return view('errors.404', ['error' => $message]);
         }
     }
-
+    /**
+     * Summary of profile
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function profile()
     {
         Session::put('page', '/admin/profile');
@@ -193,7 +223,11 @@ class AdminController extends Controller
         $team->update();
         return redirect()->back()->with('success', 'Mis à jour avec succès !');
     }
-
+    /**
+     * Summary of postProfile
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function postProfile(Request $request)
     {
         Session::flash('page', '/admin/profile');
@@ -232,7 +266,11 @@ class AdminController extends Controller
 
         return redirect()->back()->with('success', 'Profile mis à jour avec succès !');
     }
-
+    /**
+     * Summary of changePassword
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function changePassword(Request $request)
     {
         $user = Auth::guard('admin')->user();
@@ -253,7 +291,10 @@ class AdminController extends Controller
     }
 
     // listes des utilisateurs api
-
+    /**
+     * Summary of getAllUsers
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\JsonResponse
+     */
     public function getAllUsers()
     {
         try {
@@ -271,8 +312,6 @@ class AdminController extends Controller
             return view('errors.404', ['error' => $message]);
         }
     }
-
-
 
 
     // Axios ajouter un utilisateur
@@ -327,7 +366,12 @@ class AdminController extends Controller
 
 
     }
-
+    /**
+     * Summary of updateUser
+     * @param Request $request
+     * @param mixed $id
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function updateUser(Request $request, $id)
     {
         $rules = [
@@ -384,14 +428,22 @@ class AdminController extends Controller
 
         return response()->json(['Utilisateur modifié avec succès', 200]);
     }
-
+    /**
+     * Summary of deleteUser
+     * @param mixed $id
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function deleteUser($id)
     {
         $user = Admin::findOrFail($id);
         $user->delete();
         return response()->json('Supprimé', 200);
     }
-
+    /**
+     * Summary of updateUserStatus
+     * @param mixed $id
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function updateUserStatus($id)
     {
         $user = Admin::find($id);

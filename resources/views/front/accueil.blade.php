@@ -204,7 +204,7 @@
                                 data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8=""
                                 data-param9="" data-param10="" data-description="">
                                 <!-- MAIN IMAGE -->
-                                <img src="{{ asset('public/media/images/accueil.png') }}" alt="bureau, entreprise"
+                                <img src="{{ asset('public/media/images/accueil_1649840756.png') }}" alt="bureau, entreprise"
                                     data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat"
                                     data-bgparallax="off" class="rev-slidebg image" data-no-retina>
                                 <!-- LAYERS -->

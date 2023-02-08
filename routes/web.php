@@ -40,19 +40,19 @@ use App\Http\Controllers\Admin\UploadImageCkeditorController;
 |
 */
 
-Route::get('/', [PagesController::class, 'accueil'])->name('acceuil');
+Route::get('/', [PagesController::class, 'accueil'])->name('acceuil')->middleware('visitor');
 Route::post('{post}/comment/store', [CommentController::class, 'store'])->name('comment.store');
 Route::post('comment/store-offre/{offre}', [CommentController::class, 'storeOffreComment'])->name('comment.offre.store');
 
-Route::post('postuler', [FrontendController::class, 'postuler'])->name('postuler');
-Route::post('spontane/postuler', [FrontendController::class, 'spontanePostuler'])->name('spontane.postuler');
+Route::post('postuler', [FrontendController::class, 'postuler'])->name('postuler')->middleware('visitor');
+Route::post('spontane/postuler', [FrontendController::class, 'spontanePostuler'])->name('spontane.postuler')->middleware('visitor');
 
-Route::get('poles/', [PagesController::class, 'poles']);
-Route::get('apropos/', [PagesController::class, 'apropos'])->name('apropos');
+Route::get('poles/', [PagesController::class, 'poles'])->middleware('visitor');
+Route::get('apropos/', [PagesController::class, 'apropos'])->name('apropos')->middleware('visitor');
 Route::Get('/contact', [PagesController::class, 'contact'])->name('contact');
 Route::Post('/contact', [PagesController::class, 'contactSubmit']);
 
-Route::prefix('poles/{url}/')->group(function () {
+Route::prefix('poles/{url}/')->middleware('visitor')->group(function () {
     Route::get('/', function ($url) {
         $pole = Pole::where('url', $url)->get()->first();
         $metiers = IconeMetier::orderBy('nom_icone', "ASC")->latest()->limit(6)->get();
@@ -81,11 +81,12 @@ Route::prefix('poles/{url}/')->group(function () {
 });
 
 
-Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => '\App\Http\Controllers\LanguageController@switchLang']);
+Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => '\App\Http\Controllers\LanguageController@switchLang']); 
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
 Route::prefix('admin')->group(function () {
     Route::get('/', [AdminAuthController::class, 'login'])->name('admin.login');

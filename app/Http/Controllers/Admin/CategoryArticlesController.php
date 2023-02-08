@@ -28,6 +28,11 @@ class CategoryArticlesController extends Controller
         }
     }
 
+    /**
+     * Summary of addCategory
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function addCategory(Request $request)
     {
         $data = $request->all();
@@ -106,11 +111,11 @@ class CategoryArticlesController extends Controller
             }
         }
     }
-public function updateCategory($id)
-{
-    $categorie = CategoryArticle::where('id', $id)->get()->first();
-    return view('admin.pages.blog.category.update_category', ['categorie' => $categorie]);
-}
+    public function updateCategory($id)
+    {
+        $categorie = CategoryArticle::where('id', $id)->get()->first();
+        return view('admin.pages.blog.category.update_category', ['categorie' => $categorie]);
+    }
     public function editCategory(Request $request, $id)
     {
         $data = $request->all();
@@ -192,11 +197,10 @@ public function updateCategory($id)
         $categorie->delete();
         return redirect()->back();
     }
-
     public function getCategories(Request $request)
     {
         $data = $request->all();
-        
+
 
         if ($request->ajax()) {
             $data = $request->all();
@@ -208,7 +212,6 @@ public function updateCategory($id)
             return view('admin.pages.blog.articles.ajax_category_select', ['categories' => $categories]);
         }
     }
-
     public function createArticle()
     {
         return view('admin.pages.blog.articles.add_article');

@@ -525,6 +525,7 @@
 
     {{-- <link rel="stylesheet" href="{{ asset('css/style.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('assets/new/style_pole_index.css') }}">
+
 </head>
 
 <body style="width: 100%;">
@@ -726,7 +727,7 @@
                 }, 150);
             })
         }
-    </script>
+    </script> 
 </body>
 
 </html>
